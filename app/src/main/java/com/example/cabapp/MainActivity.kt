@@ -1,77 +1,78 @@
 package com.example.cabapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.text.InputType
 import android.util.Log
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.cabapp.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+
 class MainActivity : AppCompatActivity() {
-    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    val firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
-    lateinit var signedInMail: TextView
-    lateinit var email:EditText
-    lateinit var password:EditText
-    lateinit var btnSignUp:Button
-    lateinit var btnSignIn:Button
-    lateinit var btnLogin:Button
+    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
+    private var activityMainBinding: ActivityMainBinding? = null
+    private val binding get() = activityMainBinding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        email=findViewById(R.id.editTextTextEmailAddress);
-        password=findViewById(R.id.editTextTextPassword);
-        btnLogin=findViewById(R.id.button3);
-        btnSignUp=findViewById(R.id.button);
-        val roles = resources.getStringArray(R.array.Roles)
-        val arrayAdapter = ArrayAdapter(this,R.layout.dropdown_item,roles)
-        val autoCompleteTextView=findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
-        autoCompleteTextView.setAdapter(arrayAdapter)
-        btnSignUp.setOnClickListener{
+        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val roles = resources.getStringArray(R.array.roles)
+        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, roles)
+        binding.dropDownRole.showSoftInputOnFocus = false
+        binding.dropDownRole.inputType = InputType.TYPE_NULL
+        binding.dropDownRole.setAdapter(arrayAdapter)
+
+
+        binding.buttonSignUp.setOnClickListener {
             signUpUser()
         }
-        btnLogin.setOnClickListener{
+        binding.buttonLogin.setOnClickListener {
             loginUser()
         }
-
-
-    }
-    private fun signUpUser()
-    {
-        val email_val=email.text.toString();
-        val pass_val=password.text.toString();
-        firebaseAuth.createUserWithEmailAndPassword(email_val, pass_val)
-            .addOnFailureListener {
-                Toast.makeText(baseContext, "Failed", Toast.LENGTH_SHORT).show()
-                Log.e("FireException", it.message.toString())
-            }.addOnCompleteListener{
-                Toast.makeText(baseContext, "Success", Toast.LENGTH_SHORT).show()
-
-
-            }
-    }
-    private fun loginUser()
-    {
-        val email_val=email.text.toString()
-        val pass_val=password.text.toString()
-        firebaseAuth.signInWithEmailAndPassword(email_val, pass_val)
-            .addOnFailureListener {
-                Toast.makeText(baseContext, "Failed", Toast.LENGTH_SHORT).show()
-                Log.e("FireException", it.message.toString())
-            }.addOnSuccessListener {
-                Toast.makeText(baseContext, "Success", Toast.LENGTH_SHORT).show()
-                val intent= Intent(this,AdminLogin::class.java)
-                startActivity(intent)
-            }
-
-
-
     }
 
+    override fun onResume() {
+        super.onResume()
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.dropDownRole.showDropDown()
+        }, 3000)
+    }
 
+    private fun signUpUser() {
+        firebaseAuth.createUserWithEmailAndPassword(
+            binding.editTextEmail.text.toString(),
+            binding.editTextPassword.text.toString()
+        ).addOnFailureListener {
+            Toast.makeText(baseContext, "Failed", Toast.LENGTH_SHORT).show()
+            Log.e("FireException", it.message.toString())
+        }.addOnCompleteListener {
+            Toast.makeText(baseContext, "Success", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun loginUser() {
+        firebaseAuth.signInWithEmailAndPassword(
+            binding.editTextEmail.text.toString(),
+            binding.editTextPassword.text.toString()
+        ).addOnFailureListener {
+            Toast.makeText(baseContext, "Failed", Toast.LENGTH_SHORT).show()
+            Log.e("FireException", it.message.toString())
+        }.addOnSuccessListener {
+            Toast.makeText(baseContext, "Success", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AdminLogin::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        activityMainBinding = null
+    }
 }

@@ -15,8 +15,8 @@ class AdminLogin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_login)
-        btnCar=findViewById(R.id.button3);
-        btnBooking=findViewById(R.id.button4);
+        btnCar=findViewById(R.id.button_login)
+        btnBooking=findViewById(R.id.button4)
         btnDriver=findViewById(R.id.button5)
         btnCar.setOnClickListener{
             addCar()
