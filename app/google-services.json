@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "787394450056",
+    "firebase_url": "https://social-fbc63.firebaseio.com",
+    "project_id": "social-fbc63",
+    "storage_bucket": "social-fbc63.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787394450056:android:8bdee2c9ee3314c3bf453d",
+        "android_client_info": {
+          "package_name": "com.example.cabapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmmTdyxQaqiTflc2UWuELlFWc5uf6GTqc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787394450056-jc9dfj7mf9q1pnc3pd4lu0r107o9m0tr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787394450056:android:140689cab2cad333bf453d",
+        "android_client_info": {
+          "package_name": "com.naren.mobilistensdk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmmTdyxQaqiTflc2UWuELlFWc5uf6GTqc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787394450056-jc9dfj7mf9q1pnc3pd4lu0r107o9m0tr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787394450056:android:688f2dc420c38868bf453d",
+        "android_client_info": {
+          "package_name": "com.rozdoum.socialcomponents"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmmTdyxQaqiTflc2UWuELlFWc5uf6GTqc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787394450056-jc9dfj7mf9q1pnc3pd4lu0r107o9m0tr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787394450056:android:d399b02857b8c7cabf453d",
+        "android_client_info": {
+          "package_name": "com.siqandroid.david"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmmTdyxQaqiTflc2UWuELlFWc5uf6GTqc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787394450056-jc9dfj7mf9q1pnc3pd4lu0r107o9m0tr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

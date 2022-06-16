@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CabApp</string>
+    <string-array name="Roles">
+        <item>Admin</item>
+        <item>Manager</item>
+        <item>User</item>
+        <item>Driver</item>
+    </string-array>
+</resources>
