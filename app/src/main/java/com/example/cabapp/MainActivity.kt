@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity() {
             Log.e("FireException", it.message.toString())
         }.addOnSuccessListener {
             Toast.makeText(baseContext, "Success", Toast.LENGTH_SHORT).show()
+
             val intent = Intent(this, AdminLogin::class.java)
             startActivity(intent)
         }
