@@ -4,6 +4,7 @@
     package="com.example.cabapp">
 
     <application
+        android:name=".CabApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,12 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CabApp"
         tools:targetApi="31">
-        <activity
-            android:name=".CarManagement"
-            android:exported="false" />
-        <activity
-            android:name=".AdminLogin"
-            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

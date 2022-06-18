@@ -1,75 +1,63 @@
 package com.example.cabapp
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.text.InputType
-import android.util.Log
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.cabapp.databinding.ActivityMainBinding
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.example.cabapp.ui.BaseFragment
 
 class MainActivity : AppCompatActivity() {
-    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
+
     private var activityMainBinding: ActivityMainBinding? = null
     private val binding get() = activityMainBinding!!
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val roles = resources.getStringArray(R.array.roles)
-        val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, roles)
-        binding.dropDownRole.showSoftInputOnFocus = false
-        binding.dropDownRole.inputType = InputType.TYPE_NULL
-        binding.dropDownRole.setAdapter(arrayAdapter)
+        setSupportActionBar(binding.toolbar)
 
+        navController = (supportFragmentManager
+            .findFragmentById(binding.navHostFragmentContentMain.id) as NavHostFragment? ?: return).navController
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.fragment_login, R.id.fragment_admin, R.id.fragment_home
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.buttonSignUp.setOnClickListener {
-            signUpUser()
-        }
-        binding.buttonLogin.setOnClickListener {
-            loginUser()
+    }
+
+    override fun onBackPressed() {
+        if (isTopLevelDestination()) {
+            finish()
+        } else {
+            onSupportNavigateUp()
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        Handler(Looper.getMainLooper()).postDelayed({
-            binding.dropDownRole.showDropDown()
-        }, 3000)
+    private fun isTopLevelDestination(): Boolean {
+        return appBarConfiguration.topLevelDestinations.contains(navController.currentDestination?.id)
     }
 
-    private fun signUpUser() {
-        firebaseAuth.createUserWithEmailAndPassword(
-            binding.editTextEmail.text.toString(),
-            binding.editTextPassword.text.toString()
-        ).addOnFailureListener {
-            Toast.makeText(baseContext, "Failed", Toast.LENGTH_SHORT).show()
-            Log.e("FireException", it.message.toString())
-        }.addOnCompleteListener {
-            Toast.makeText(baseContext, "Success", Toast.LENGTH_SHORT).show()
+    override fun onSupportNavigateUp(): Boolean {
+        val fragment = getCurrentDestinationFragment()
+        if (!isTopLevelDestination() && fragment != null && fragment.onBackPressed()) {
+            return true
         }
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
     }
 
-    private fun loginUser() {
-        firebaseAuth.signInWithEmailAndPassword(
-            binding.editTextEmail.text.toString(),
-            binding.editTextPassword.text.toString()
-        ).addOnFailureListener {
-            Toast.makeText(baseContext, "Failed", Toast.LENGTH_SHORT).show()
-            Log.e("FireException", it.message.toString())
-        }.addOnSuccessListener {
-            Toast.makeText(baseContext, "Success", Toast.LENGTH_SHORT).show()
-
-            val intent = Intent(this, AdminLogin::class.java)
-            startActivity(intent)
-        }
+    private fun getCurrentDestinationFragment(): BaseFragment? {
+        return supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)?.childFragmentManager?.fragments?.get(0) as? BaseFragment?
     }
 
     override fun onDestroy() {

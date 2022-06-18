@@ -5,6 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/button_sign_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="12dp"
+        android:layout_alignParentEnd="true"
+        android:text="Sign out"/>
+
     <TextView
         android:id="@+id/text_Admin"
         android:layout_width="wrap_content"
@@ -14,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="162dp"
         android:layout_marginTop="87dp"
-        android:text="Admin Page" />
+        android:text="@string/admin" />
 
     <Button
         android:id="@+id/button_car_management"
@@ -24,7 +33,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="62dp"
         android:layout_marginTop="283dp"
-        android:text="Car" />
+        android:text="@string/car" />
 
     <Button
         android:id="@+id/button_booking"
@@ -34,7 +43,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="283dp"
         android:layout_marginEnd="76dp"
-        android:text="Booking" />
+        android:text="@string/booking" />
 
     <Button
         android:id="@+id/button_driver"
@@ -43,5 +52,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="252dp"
-        android:text="Driver" />
+        android:text="@string/driver" />
 </RelativeLayout>

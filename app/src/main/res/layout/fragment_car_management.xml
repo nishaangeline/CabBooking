@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="163dp"
         android:layout_marginTop="72dp"
-        android:text="Car Management" />
+        android:text="@string/car_management" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout_vehicle_no"
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:hint="VehicleNo" />
+            android:hint="@string/vehicle_no" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:hint="ModelName" />
+            android:hint="@string/model_name" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:hint="SeatNo" />
+            android:hint="@string/seat_no" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,10 +82,10 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="168dp"
-        android:layout_marginRight="168dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginRight="132dp"
         android:layout_marginBottom="276dp"
-        android:text="Add" />
+        android:text="@string/add_vehicle" />
 
 
 </RelativeLayout>
