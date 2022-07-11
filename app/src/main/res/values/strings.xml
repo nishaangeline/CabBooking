@@ -4,14 +4,19 @@
     <string name="password">Password</string>
     <string name="app_title">Cabbie App</string>
     <string name="choose_your_role">Choose your role</string>
+    <string name="choose_model">Choose Car model</string>
     <string name="sign_up">Sign up</string>
     <string name="login">Login</string>
+    <string name="next">Next</string>
+    <string name="bookingdetails">Booking Details</string>
     <string-array name="roles">
         <item>Admin</item>
         <item>Manager</item>
         <item>User</item>
         <item>Driver</item>
     </string-array>
+
+
     <string name="title_activity_main2">MainActivity2</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -24,8 +29,12 @@
     <string name="title_login">Login</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="admin">Admin</string>
+    <string name="fromloc">FromLocation</string>
+    <string name="toloc">ToLocation</string>
+    <string name="pickuploc">PickUpLocation</string>
     <string name="car">Car</string>
     <string name="booking">Booking</string>
+    <string name="book">Book</string>
     <string name="driver">Driver</string>
     <string name="car_management">Car Management</string>
     <string name="vehicle_no">Vehicle no</string>

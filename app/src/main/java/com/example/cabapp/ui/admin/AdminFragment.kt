@@ -29,6 +29,9 @@ class AdminFragment : BaseFragment() {
         binding.buttonCarManagement.setOnClickListener {
             findNavController().navigate(R.id.fragment_car_management)
         }
+        binding.buttonBooking.setOnClickListener {
+            findNavController().navigate(R.id.fragment_booking);
+        }
         binding.buttonSignOut.setOnClickListener {
             adminViewModel.signOut()
             requireActivity().intent?.let { intent ->
