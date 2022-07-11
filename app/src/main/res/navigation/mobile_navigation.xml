@@ -50,6 +50,9 @@
         android:name="com.example.cabapp.ui.signup.SignUpFragment"
         android:label="@string/sign_up"
         tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signup_to_login"
+            app:destination="@+id/fragment_login" />
     </fragment>
 
 </navigation>
