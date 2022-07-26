@@ -2,10 +2,12 @@ package com.example.cabapp.ui.booking
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.text.InputType
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.navigation.fragment.findNavController
 import com.example.cabapp.R
 
@@ -27,13 +29,20 @@ class BookingFragment : Fragment() {
     ): View? {
         bookingViewModel = ViewModelProvider(this)[BookingViewModel::class.java]
         _binding = FragmentBookingBinding.inflate(inflater, container, false)
+        val carModels = resources.getStringArray(R.array.roles)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, carModels)
+        with(binding) {
+            dropDownRole.showSoftInputOnFocus = false
+            dropDownRole.inputType = InputType.TYPE_NULL
+            dropDownRole.setAdapter(arrayAdapter)
         binding.buttonNext.setOnClickListener {
+            bookingViewModel.fetchCar()
             findNavController().navigate(R.id.fragment_booking_detail);
-        }
+        }}
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
+    override     fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         bookingViewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
         // TODO: Use the ViewModel
