@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
     id 'com.google.gms.google-services'
     id 'androidx.navigation.safeargs.kotlin'
 }
@@ -45,6 +46,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.0.5'
     implementation 'com.google.firebase:firebase-database-ktx:20.0.5'
     implementation 'com.google.firebase:firebase-database:20.0.5'
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.2'
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'

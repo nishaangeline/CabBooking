@@ -36,10 +36,9 @@ class CarManagementFragment : Fragment() {
         with(binding) {
         binding.buttonAdd.setOnClickListener {
             carManagementViewModel.insertCar(
-                editVehicleNo.text.toString(),
+                editVehicleNo.text.toString().uppercase(),
                 editModelName.text.toString(),
                 editSeatNo.text.toString()
-
             )
         }
         return binding.root

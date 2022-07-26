@@ -1,51 +1,76 @@
 package com.example.cabapp.ui.booking
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.InputType
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.AdapterView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.cabapp.R
-
+import com.example.cabapp.data.entity.Car
 import com.example.cabapp.databinding.FragmentBookingBinding
-import com.example.cabapp.ui.admin.AdminViewModel
 
 class BookingFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = BookingFragment()
-    }
     private var _binding: FragmentBookingBinding? = null
     private val binding get() = _binding!!
     private lateinit var bookingViewModel: BookingViewModel
+    private var carsAdapter: CarsAdapter? = null
+    private var selectedCar: Car? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         bookingViewModel = ViewModelProvider(this)[BookingViewModel::class.java]
+        bookingViewModel.fetchCar()
         _binding = FragmentBookingBinding.inflate(inflater, container, false)
-        val carModels = resources.getStringArray(R.array.roles)
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, carModels)
+        binding.dropDownRole.setOnClickListener {
+            Log.e("Dropdown", binding.dropDownRole.text.toString())
+            binding.dropDownRole.showDropDown()
+        }
+        binding.dropDownRole.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+                selectedCar = carsAdapter?.getItem(position)
+                binding.dropDownRole.dismissDropDown()
+            }
+
+        bookingViewModel.carLiveData.observe(viewLifecycleOwner) { carsList ->
+            if (carsAdapter == null) {
+                carsAdapter =
+                    CarsAdapter(requireContext(), R.layout.dropdown_item, carsList).apply {
+                        setNotifyOnChange(true)
+                    }
+//                carsAdapter.setNotifyOnChange(true)
+                binding.dropDownRole.setAdapter(carsAdapter)
+            } else {
+                carsAdapter?.updateList(carsList)
+            }
+        }
         with(binding) {
             dropDownRole.showSoftInputOnFocus = false
             dropDownRole.inputType = InputType.TYPE_NULL
-            dropDownRole.setAdapter(arrayAdapter)
-        binding.buttonNext.setOnClickListener {
-            bookingViewModel.fetchCar()
-            findNavController().navigate(R.id.fragment_booking_detail);
-        }}
+//            dropDownRole.setAdapter(arrayAdapter)
+            binding.buttonNext.setOnClickListener {
+                if (selectedCar != null) {
+                    findNavController().navigate(
+                        BookingFragmentDirections.openBookingDetailsPage(
+                            selectedCar!!
+                        )
+                    )
+                }
+            }
+        }
         return binding.root
     }
 
-    override     fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        bookingViewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        carsAdapter = null
     }
-
 }

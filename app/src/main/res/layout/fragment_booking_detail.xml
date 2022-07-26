@@ -2,14 +2,58 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingHorizontal="12dp">
 
+    <TextView
+        android:id="@+id/text_car_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textStyle="bold"
+        android:text="@string/car_details" />
+    <TextView
+        android:id="@+id/text_car_name_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/text_car_details"
+        android:text="@string/model_name_colon" />
+
+    <TextView
+        android:id="@+id/text_car_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/text_car_name_title"
+        android:layout_below="@+id/text_car_details"
+        tools:text="@string/model_name_colon" />
+
+    <TextView
+        android:id="@+id/text_vehicle_number_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/text_car_name"
+        android:text="@string/vehicle_no_colon" />
+
+    <TextView
+        android:id="@+id/text_vehicle_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_below="@+id/text_car_name"
+        android:layout_toEndOf="@+id/text_vehicle_number_title"
+        tools:text="@string/vehicle_no_colon" />
     <TextView
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="82dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/text_vehicle_number_title"
         android:text="@string/bookingdetails" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -71,7 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:hint="@string/fromloc" />
+            android:hint="@string/from_location" />
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -90,7 +134,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:hint="@string/toloc" />
+            android:hint="@string/to_location" />
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -109,7 +153,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:hint="@string/pickuploc" />
+            android:hint="@string/boarding_point" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

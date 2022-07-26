@@ -27,10 +27,10 @@ class AdminFragment : BaseFragment() {
         adminViewModel = ViewModelProvider(this)[AdminViewModel::class.java]
         _binding = FragmentAdminBinding.inflate(inflater, container, false)
         binding.buttonCarManagement.setOnClickListener {
-            findNavController().navigate(R.id.fragment_car_management)
+            findNavController().navigate(AdminFragmentDirections.openCarManagementsPage())
         }
         binding.buttonBooking.setOnClickListener {
-            findNavController().navigate(R.id.fragment_booking);
+            findNavController().navigate(AdminFragmentDirections.openBookingsPage())
         }
         binding.buttonSignOut.setOnClickListener {
             adminViewModel.signOut()

@@ -20,7 +20,7 @@ class CarManagementViewModel : ViewModel() {
         val cars = Car(vehicleNo, modelName,seatNo)
         Log.e("Hi",database.toString())
        //hi
-        database.child("Car").child(vehicleNo).setValue(cars).addOnFailureListener{
+        database.child("cars").child(vehicleNo).setValue(cars).addOnFailureListener{
 
             Toast.makeText(CabApplication.appContext, "Failed", Toast.LENGTH_SHORT).show()
 

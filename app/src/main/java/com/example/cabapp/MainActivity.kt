@@ -1,6 +1,7 @@
 package com.example.cabapp
 
 import android.os.Bundle
+import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
+//        setSupportActionBar(binding.toolbar)
 
         navController = (supportFragmentManager
             .findFragmentById(binding.navHostFragmentContentMain.id) as NavHostFragment? ?: return).navController
@@ -32,12 +33,15 @@ class MainActivity : AppCompatActivity() {
                 R.id.fragment_login, R.id.fragment_admin, R.id.fragment_home
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
 
     }
 
     override fun onBackPressed() {
         if (isTopLevelDestination()) {
+            if (navController.currentDestination?.id == R.id.fragment_login && navController.previousBackStackEntry == null) {
+                onSupportNavigateUp()
+            }
             finish()
         } else {
             onSupportNavigateUp()
