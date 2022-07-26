@@ -14,17 +14,12 @@ import com.google.firebase.ktx.Firebase
 class CarManagementViewModel : ViewModel() {
     lateinit var database: DatabaseReference
 
-
-
-
-
-
     fun insertCar(vehicleNo: String, modelName: String,seatNo: String) {
 
         database = Firebase.database.reference
         val cars = Car(vehicleNo, modelName,seatNo)
         Log.e("Hi",database.toString())
-//hi
+       //hi
         database.child("Car").child(vehicleNo).setValue(cars).addOnFailureListener{
 
             Toast.makeText(CabApplication.appContext, "Failed", Toast.LENGTH_SHORT).show()
