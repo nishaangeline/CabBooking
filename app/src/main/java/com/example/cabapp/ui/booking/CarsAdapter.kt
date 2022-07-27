@@ -27,6 +27,7 @@ class CarsAdapter(context: Context, private val resourceId: Int, private var lis
     }
 
     fun updateList(newList: List<Car>) {
+
         list = newList
         notifyDataSetChanged()
     }
@@ -49,7 +50,8 @@ class CarsAdapter(context: Context, private val resourceId: Int, private var lis
 
     var nameFilter: Filter = object : Filter() {
         override fun convertResultToString(resultValue: Any): CharSequence {
-            return (resultValue as Car).modelName.toString()
+
+                return (resultValue as Car).modelName.toString()
         }
 
         override fun performFiltering(constraint: CharSequence): FilterResults {

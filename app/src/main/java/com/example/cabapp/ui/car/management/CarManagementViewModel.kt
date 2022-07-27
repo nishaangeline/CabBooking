@@ -17,7 +17,8 @@ class CarManagementViewModel : ViewModel() {
     fun insertCar(vehicleNo: String, modelName: String,seatNo: String) {
 
         database = Firebase.database.reference
-        val cars = Car(vehicleNo, modelName,seatNo)
+        val booking_status="Available"
+        val cars = Car(vehicleNo, modelName,seatNo,booking_status)
         Log.e("Hi",database.toString())
        //hi
         database.child("cars").child(vehicleNo).setValue(cars).addOnFailureListener{

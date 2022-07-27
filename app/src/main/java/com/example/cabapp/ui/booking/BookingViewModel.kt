@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cabapp.data.entity.Car
 import com.google.firebase.database.*
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+//import com.google.gson.Gson
+//import com.google.gson.reflect.TypeToken
 
 
 class BookingViewModel : ViewModel() {

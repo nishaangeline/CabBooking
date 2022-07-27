@@ -8,5 +8,6 @@ import kotlinx.parcelize.Parcelize
 data class Car(
     @SerializedName("vehicle_name") val vehicleNo: String? = null,
     @SerializedName("model_name") val modelName: String? = null,
-    @SerializedName("seat_no") val seatNo: String? = null
+    @SerializedName("seat_no") val seatNo: String? = null,
+    @SerializedName("booking_status") val bookingStatus: String? = null
 ) : Parcelable

@@ -9,6 +9,7 @@
     <string name="login">Login</string>
     <string name="next">Next</string>
     <string name="bookingdetails">Booking Details</string>
+    <string name="booking_status_Available">Available</string>
     <string-array name="roles">
         <item>Admin</item>
         <item>Manager</item>
