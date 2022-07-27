@@ -39,7 +39,9 @@ class BookingFragment : Fragment() {
                 binding.dropDownRole.dismissDropDown()
             }
 
-        bookingViewModel.carLiveData.observe(viewLifecycleOwner) { carsList ->
+        bookingViewModel.carLiveData.observe(viewLifecycleOwner) {
+
+                carsList ->
             if (carsAdapter == null) {
                 carsAdapter =
                     CarsAdapter(requireContext(), R.layout.dropdown_item, carsList).apply {

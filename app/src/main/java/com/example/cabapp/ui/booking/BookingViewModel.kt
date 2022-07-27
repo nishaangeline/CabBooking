@@ -20,27 +20,33 @@ class BookingViewModel : ViewModel() {
     fun fetchCar() {
 
         database = FirebaseDatabase.getInstance().getReference("cars")
-        database.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
+        //Log.e("Status",status.toString())
+            database.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                 //Bhahi entha code poten ..I got the value of status but the IF doesnt work!!
+                    for (sampleSnapshot in dataSnapshot.children.toList()) {
+                        val status = sampleSnapshot.child("bookingStatus").value
 //                var carHash = dataSnapshot.value as HashMap<String, Any>
 //                carHash.va
-                mutableCarLiveData.value = dataSnapshot.children.toList().map {
-                    it.getValue(Car::class.java) ?: Car()
-                }//Gson().fromJson( .toString(), object : TypeToken<List<Car>>() {}.type)
+                        val statusValue = status.toString()
+                        Log.d("booking status", status.toString())
+                        if (statusValue.equals("Available")) {
+                            mutableCarLiveData.value = dataSnapshot.children.toList().map {
+                                it.getValue(Car::class.java) ?: Car()
+                            }
+                        }//Gson().fromJson( .toString(), object : TypeToken<List<Car>>() {}.type)
 //                for (sampleSnapshot in dataSnapshot.children.toList()) {
 //                    Log.d(
 //                        "Booking",
 //                        "onDataChange: sampleSnapshot " + sampleSnapshot.key + " = " + sampleSnapshot.value
 //                    )
 //                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                throw databaseError.toException() // don't ignore errors
-            }
-        })
-
+                    }
+                }
+                override fun onCancelled(databaseError: DatabaseError) {
+                    throw databaseError.toException() // don't ignore errors
+                }
+            })
     }
-
 
 }
