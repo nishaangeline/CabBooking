@@ -11,7 +11,8 @@ import com.example.cabapp.R
 import com.example.cabapp.data.entity.Car
 
 
-class CarsAdapter(context: Context, private val resourceId: Int, private var list: List<Car>) : ArrayAdapter<Car>(context, resourceId) {
+class CarsAdapter(context: Context, private val resourceId: Int, private var list: List<Car>) :
+    ArrayAdapter<Car>(context, resourceId) {
 
 //    var onItemClickListener: OnItemClickListener? = null
 
@@ -19,15 +20,11 @@ class CarsAdapter(context: Context, private val resourceId: Int, private var lis
         val view = LayoutInflater.from(parent.context).inflate(resourceId, parent, false)
         val car: Car = list[position]
         val textViewModelName = view?.findViewById(R.id.textView) as TextView
-        textViewModelName.text = car.modelName
-//        view.setOnClickListener {
-//            onItemClickListener?.onClick(list[position])
-//        }
+        textViewModelName.text = car.modelName// + " (" + car.vehicleNo + ")"
         return view
     }
 
     fun updateList(newList: List<Car>) {
-
         list = newList
         notifyDataSetChanged()
     }
@@ -50,23 +47,13 @@ class CarsAdapter(context: Context, private val resourceId: Int, private var lis
 
     var nameFilter: Filter = object : Filter() {
         override fun convertResultToString(resultValue: Any): CharSequence {
-
-                return (resultValue as Car).modelName.toString()
+            return (resultValue as Car).modelName.toString()
         }
 
-        override fun performFiltering(constraint: CharSequence): FilterResults {
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
             return FilterResults()
         }
 
-        override fun publishResults(constraint: CharSequence, results: FilterResults) {
-//            val filterList: List<People> = results.values as ArrayList<People>
-//            if (results != null && results.count > 0) {
-//                clear()
-//                for (people in filterList) {
-//                    add(people)
-//                    notifyDataSetChanged()
-//                }
-//            }
-        }
+        override fun publishResults(constraint: CharSequence?, results: FilterResults) {}
     }
 }

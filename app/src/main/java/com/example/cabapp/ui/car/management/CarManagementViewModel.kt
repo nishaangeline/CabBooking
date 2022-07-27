@@ -5,8 +5,6 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.example.cabapp.CabApplication
 import com.example.cabapp.data.entity.Car
-import com.example.cabapp.ui.login.LoginViewModel
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -14,24 +12,19 @@ import com.google.firebase.ktx.Firebase
 class CarManagementViewModel : ViewModel() {
     lateinit var database: DatabaseReference
 
-    fun insertCar(vehicleNo: String, modelName: String,seatNo: String) {
+    fun insertCar(vehicleNo: String, modelName: String, seatNo: String) {
 
         database = Firebase.database.reference
-        val booking_status="Available"
-        val cars = Car(vehicleNo, modelName,seatNo,booking_status)
-        Log.e("Hi",database.toString())
-       //hi
-        database.child("cars").child(vehicleNo).setValue(cars).addOnFailureListener{
+        val car = Car(vehicleNo, modelName, seatNo)
+        Log.e("Hi", database.toString())
+        //hi
+        database.child("cars").child(vehicleNo).setValue(car).addOnFailureListener {
 
             Toast.makeText(CabApplication.appContext, "Failed", Toast.LENGTH_SHORT).show()
 
         }.addOnSuccessListener {
             Toast.makeText(CabApplication.appContext, "Success", Toast.LENGTH_SHORT).show()
         }
-
-
-
-
 
 
     }

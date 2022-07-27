@@ -47,4 +47,6 @@
     <string name="car_details">Car details</string>
     <string name="model_name_colon">Model name :</string>
     <string name="vehicle_no_colon">Vehicle no</string>
+    <string name="departure_date">Departure date</string>
+    <string name="arrival_date">Arrival date</string>
 </resources>

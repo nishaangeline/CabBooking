@@ -1,12 +1,14 @@
 package com.example.cabapp.ui.booking
 
 import android.os.Bundle
+import android.text.Editable
 import android.text.InputType
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -39,24 +41,35 @@ class BookingFragment : Fragment() {
                 binding.dropDownRole.dismissDropDown()
             }
 
-        bookingViewModel.carLiveData.observe(viewLifecycleOwner) {
-
-                carsList ->
+        bookingViewModel.carLiveData.observe(viewLifecycleOwner) { carsList ->
+            val filteredCarsList = carsList.filter { car ->
+                val carStatus = Car.Availability.values().find {
+                    it.value == car.bookingStatus
+                }
+                carStatus == Car.Availability.Available
+            }
+            if (selectedCar != null && !filteredCarsList.any { it.vehicleNo == selectedCar!!.vehicleNo }) {
+                Toast.makeText(context, "Sorry, the cab you have selected is booked by someone else.", Toast.LENGTH_LONG).show()
+                selectedCar = null
+                binding.dropDownRole.setText("")
+                binding.dropDownRole.showDropDown()
+            }
             if (carsAdapter == null) {
                 carsAdapter =
-                    CarsAdapter(requireContext(), R.layout.dropdown_item, carsList).apply {
-                        setNotifyOnChange(true)
-                    }
-//                carsAdapter.setNotifyOnChange(true)
+                    CarsAdapter(requireContext(), R.layout.dropdown_item, filteredCarsList)
                 binding.dropDownRole.setAdapter(carsAdapter)
             } else {
-                carsAdapter?.updateList(carsList)
+                carsAdapter?.updateList(filteredCarsList)
+            }
+            if (filteredCarsList.isNotEmpty() && binding.dropDownRole.isPopupShowing) {
+                binding.dropDownRole.postDelayed({
+                    binding.dropDownRole.showDropDown()
+                }, 100)
             }
         }
         with(binding) {
             dropDownRole.showSoftInputOnFocus = false
             dropDownRole.inputType = InputType.TYPE_NULL
-//            dropDownRole.setAdapter(arrayAdapter)
             binding.buttonNext.setOnClickListener {
                 if (selectedCar != null) {
                     findNavController().navigate(
