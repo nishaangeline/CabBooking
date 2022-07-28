@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="12dp">
+    <TextView
+        android:id="@+id/text_car_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/booking_details"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text_car_name_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_car_details"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="13dp"
+        android:text="@string/model_name_colon" />
+
+    <TextView
+        android:id="@+id/text_vehicle_number_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_car_name"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/vehicle_no_colon" />
+
+    <TextView
+        android:id="@+id/text_departure_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_vehicle_number_title"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/departure_date_colon" />
+
+    <TextView
+        android:id="@+id/text_arrival_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_departure_date"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/arrival_date_colon" />
+
+    <TextView
+        android:id="@+id/text_start_time_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_end_date"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/start_time_colon" />
+    <TextView
+        android:id="@+id/text_from_loc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_start_time_val"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/from_location_colon" />
+
+    <TextView
+        android:id="@+id/text_to_loc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_from_loc"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/to_location_colon" />
+
+    <TextView
+        android:id="@+id/text_boarding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_to_loc"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/boarding_point_colon" />
+    <TextView
+        android:id="@+id/text_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_boarding"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/user_name_colon" />
+
+    <TextView
+        android:id="@+id/text_designation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_user"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/user_designation_colon" />
+
+    <TextView
+        android:id="@+id/text_car_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_car_details"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="13dp"
+        android:layout_toEndOf="@+id/text_car_name_title"
+        tools:text="@string/model_name" />
+    <TextView
+        android:id="@+id/text_vehicle_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_car_name"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@+id/text_vehicle_number_title"
+        tools:text="@string/vehicle_no" />
+
+
+    <TextView
+        android:id="@+id/text_start_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_vehicle_number"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="13dp"
+        android:layout_toEndOf="@+id/text_car_name_title"
+        tools:text="@string/departure_date" />
+
+
+
+    <TextView
+        android:id="@+id/text_end_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_start_date"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="17dp"
+        android:layout_toEndOf="@+id/text_car_name_title"
+        tools:text="@string/arrival_date" />
+
+
+    <TextView
+        android:id="@+id/text_start_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_arrival_date"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="17dp"
+        android:layout_toEndOf="@+id/text_car_name_title"
+        tools:text="@string/start_time" />
+
+    <TextView
+        android:id="@+id/text_from_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_start_time"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="17dp"
+        android:layout_toEndOf="@+id/text_car_name_title"
+        tools:text="@string/from_location" />
+
+    <TextView
+        android:id="@+id/text_to_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_from_val"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="17dp"
+        android:layout_toEndOf="@+id/text_car_name_title"
+        tools:text="@string/to_location" />
+
+
+    <TextView
+        android:id="@+id/text_boarding_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_to_val"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="18dp"
+        tools:text="@string/boarding_point" />
+    <TextView
+        android:id="@+id/text_user_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_boarding_val"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="18dp"
+        tools:text="@string/user_name" />
+    <TextView
+        android:id="@+id/text_designation_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_user_val"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="18dp"
+        tools:text="@string/user_designation" />
+
+
+    <Button
+        android:id="@+id/button_accept"
+        android:layout_width="129dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="266dp"
+        android:layout_marginBottom="194dp"
+        android:text="Accept" />
+
+    <Button
+        android:id="@+id/button_reject"
+        android:layout_width="129dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="195dp"
+        android:text="Reject" />
+
+
+</RelativeLayout>
